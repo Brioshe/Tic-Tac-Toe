@@ -14,14 +14,14 @@ public class StateSwitchHandler : MonoBehaviour
                  NodeView nodeView = hit.collider.GetComponent<NodeView>();
                 if (nodeView != null && nodeView.node != null)
                 {
-                    if (nodeView.node.cellState == CellState.dead)
-                    {
-                        nodeView.node.cellState = CellState.alive;
-                    }
-                    else if (nodeView.node.cellState == CellState.alive)
-                    {
-                        nodeView.node.cellState = CellState.dead;
-                    }
+                    // if (nodeView.node.cellState == CellState.dead)
+                    // {
+                    //     nodeView.node.cellState = CellState.alive;
+                    // }
+                    // else if (nodeView.node.cellState == CellState.alive)
+                    // {
+                    //     nodeView.node.cellState = CellState.dead;
+                    // }
                 }
             }
         }

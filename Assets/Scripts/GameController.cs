@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     public Canvas canvas;
     public MapData mapData;
     public GraphClass graph;
-    public CellMechanics cellMechanics;
 
     public bool IsGameplayRunning = false;
     public bool IsGamePaused = false;
@@ -90,17 +89,17 @@ public class GameController : MonoBehaviour
                 Debug.LogWarning("No graph is found.");
             }
 
-            if (cellMechanics != null)
-            {
-                Debug.LogWarning("CellMechanics loaded successfully");
-                Debug.LogWarning("Graph Size: " + graph.m_width + " x " + graph.m_height);
+            // if (cellMechanics != null)
+            // {
+            //     Debug.LogWarning("CellMechanics loaded successfully");
+            //     Debug.LogWarning("Graph Size: " + graph.m_width + " x " + graph.m_height);
 
-                stopText.enabled = false;
-                Pausebutton.interactable = false;
+            //     stopText.enabled = false;
+            //     Pausebutton.interactable = false;
 
-                cellMechanics.Init(graph, graphView);
-                StartCoroutine(GOLCoroutine());
-            }
+            //     cellMechanics.Init(graph, graphView);
+            //     StartCoroutine(GOLCoroutine());
+            // }
         }
     }
 
@@ -131,7 +130,7 @@ public class GameController : MonoBehaviour
         }
 
 
-        cellMechanics.UpdateAliveNodes();
+        //cellMechanics.UpdateAliveNodes();
     }
 
     IEnumerator GOLCoroutine()
@@ -150,7 +149,7 @@ public class GameController : MonoBehaviour
             }
 
             while (IsGameplayRunning && !IsGamePaused) {
-                cellMechanics.UpdateCellStates();
+                //cellMechanics.UpdateCellStates();
                 yield return new WaitForSeconds(tickInterval);
             }
         }
@@ -253,7 +252,7 @@ public class GameController : MonoBehaviour
 
     public void GameStepOnce()
     {
-        cellMechanics.UpdateCellStates();
+        //cellMechanics.UpdateCellStates();
     }
 
     public void SetState(TextAsset text)
@@ -269,7 +268,7 @@ public class GameController : MonoBehaviour
             }
         }
 
-        cellMechanics.UpdateAliveNodes();
+        //cellMechanics.UpdateAliveNodes();
     }
 
     public void GetSwitchState()    // Define ray, cast it from camera, detect clicked node's cellstate, and lock switching to only that type.
@@ -283,14 +282,14 @@ public class GameController : MonoBehaviour
             
             Debug.Log("SwitchState probe ray hit @ (" + nodeView.node.xIndex + ", " + nodeView.node.yIndex + ")");
 
-            if (nodeView.node.cellState == CellState.alive)
-            {
-                switchStateLock = true;
-            }
-            else if (nodeView.node.cellState == CellState.dead)
-            {
-                switchStateLock = false;
-            }
+            // if (nodeView.node.cellState == CellState.alive)
+            // {
+            //     switchStateLock = true;
+            // }
+            // else if (nodeView.node.cellState == CellState.dead)
+            // {
+            //     switchStateLock = false;
+            // }
         }
     }
 
@@ -309,14 +308,14 @@ public class GameController : MonoBehaviour
             {
                 lastNodeRaycast = nodeView.node;
 
-                if (nodeView.node.cellState == CellState.dead && switchStateLock == false)
-                {
-                    nodeView.node.cellState = CellState.alive;
-                }
-                else if (nodeView.node.cellState == CellState.alive && switchStateLock == true)
-                {
-                    nodeView.node.cellState = CellState.dead;
-                }
+                // if (nodeView.node.cellState == CellState.dead && switchStateLock == false)
+                // {
+                //     nodeView.node.cellState = CellState.alive;
+                // }
+                // else if (nodeView.node.cellState == CellState.alive && switchStateLock == true)
+                // {
+                //     nodeView.node.cellState = CellState.dead;
+                // }
             }
         }
     }

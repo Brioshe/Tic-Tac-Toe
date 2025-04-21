@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CellState {
-    dead = 0,
-    alive = 1
-}
+public enum CellState
+    {
+        Empty,
+        X,
+        O
+    }
 
 public class Node
 {
-    public CellState cellState = CellState.dead;
+    public CellState cellState = CellState.Empty;
     // To track position in 2D Array
     public int xIndex = -1;
     public int yIndex = -1;
